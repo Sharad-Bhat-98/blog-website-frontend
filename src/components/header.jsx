@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 import Login from './login'
 import SignUp from './signup'
 import React from 'react'
-import { LogoutCall } from './backendcalls/signupcall'
+import { LogoutCall, isAuthenticated } from './backendcalls/signupcall'
 import IconButton from '@material-ui/core/IconButton'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
 const Header = () => {
     const navButtons = () => {
-        if (document.cookie) {
+        if (isAuthenticated()) {
             return (
                 <React.Fragment>
                     <Link

@@ -86,7 +86,7 @@ const BlogDetail = () => {
             </Grid>
             <Grid item xs={6}>
                 <img
-                    src={`https://cocky-brown-3dd75c.netlify.app/blogimg/${id.id}`}
+                    src={`https://blog-website-sharad.herokuapp.com/blogimg/${id.id}`}
                     height="70%"
                     width="80%"
                     style={{
