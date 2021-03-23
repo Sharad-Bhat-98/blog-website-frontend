@@ -1,6 +1,6 @@
 export const signupcall = (user) => {
     console.log(user)
-    return fetch('http://localhost:4000/signup', {
+    return fetch('https://blog-website-sharad.herokuapp.com/signup', {
         method: 'POST',
         credentials: 'include',
         body: user.formData,
@@ -15,7 +15,7 @@ export const signupcall = (user) => {
 }
 
 export const LogoutCall = () => {
-    fetch('http://localhost:4000/logout', {
+    fetch('https://blog-website-sharad.herokuapp.com/logout', {
         method: 'GET',
         credentials: 'include',
     })
@@ -32,7 +32,7 @@ export const LogoutCall = () => {
 }
 
 export const SigninCall = (user) => {
-    return fetch('http://localhost:4000/signin', {
+    return fetch('https://blog-website-sharad.herokuapp.com/signin', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(user),
