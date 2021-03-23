@@ -193,7 +193,7 @@ const ProfilePage = () => {
                                                         component="img"
                                                         alt="couldnt load image"
                                                         height="140"
-                                                        image={`http://localhost:4000/blogimg/${e._id}`}
+                                                        image={`https://blog-website-sharad.herokuapp.com/blogimg/${e._id}`}
                                                         title={e.title}
                                                     />
                                                     <CardContent>
