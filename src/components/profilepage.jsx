@@ -118,7 +118,7 @@ const ProfilePage = () => {
         marginRight: 'auto',
         marginTop: '10%',
         borderRadius: '50%',
-        backgroundImage: ` url(http://localhost:4000/profile/img/${profile.user._id})`,
+        backgroundImage: ` url(https://cocky-brown-3dd75c.netlify.app/img/${profile.user._id})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     }
