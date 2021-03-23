@@ -90,7 +90,7 @@ const Homepage = () => {
                                             <CardMedia
                                                 className={classes.media}
                                                 alt="Contemplative Reptile"
-                                                image={`https://cocky-brown-3dd75c.netlify.app/blogimg/${e._id}`}
+                                                image={`https://blog-website-sharad.herokuapp.com/blogimg/${e._id}`}
                                                 title={e.blogtitle}
                                             />
                                             <CardContent>
