@@ -118,7 +118,7 @@ const ProfilePage = () => {
         marginRight: 'auto',
         marginTop: '10%',
         borderRadius: '50%',
-        backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/img/${profile.user._id})`,
+        backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/profile/img/${profile.user._id})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     }
