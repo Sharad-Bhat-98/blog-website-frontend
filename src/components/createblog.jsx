@@ -74,7 +74,6 @@ const CreateBlog = () => {
                 return res.json()
             })
             .then((data) => {
-                console.log(data)
                 setReditect(true)
             })
             .catch((err) => {
@@ -89,7 +88,7 @@ const CreateBlog = () => {
             return
         }
     }
-    console.log(data.formData)
+
     const classes = useStyles()
 
     return (

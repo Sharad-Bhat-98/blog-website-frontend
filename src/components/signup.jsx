@@ -8,8 +8,7 @@ import Alert from '@material-ui/lab/Alert'
 import Snackbar from '@material-ui/core/Snackbar'
 import { Redirect } from 'react-router-dom'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import SnackBarComponent from './snackbar'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,11 +51,9 @@ const SignUp = () => {
 
     useEffect(() => {
         setData({ ...data, formData: new FormData() })
-        console.log('working from data')
     }, [])
 
     useEffect(() => {
-        console.log('workin g')
         if (redirect) {
             setTimeout(() => {
                 setRedirectValue({
@@ -117,14 +114,13 @@ const SignUp = () => {
 
     const handleimageupload = (e) => {
         const img = e.target.files[0]
-        // console.log(e.target.name)
+
         data.formData.set(e.target.name, img)
         setData({ ...data, photo: img })
         setError({ ...Error, photo: null })
     }
 
     const submit = () => {
-        console.log(data)
         signupcall(data)
             .then((data) => {
                 if (data.errors) {

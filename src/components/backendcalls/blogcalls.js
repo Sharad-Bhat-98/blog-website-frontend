@@ -17,11 +17,9 @@ export const getBlog = async () => {
 }
 
 export const postBlog = async (data) => {
-    console.log(localStorage.getItem('jwt'))
     const obj = JSON.parse(localStorage.getItem('jwt'))
     data.formData.set('userid', obj.user)
     data.formData.set('email', 'dummyemail@gmail.com')
-    console.log(data)
 
     const res = await fetch(
         'https://blog-website-sharad.herokuapp.com/createblog',

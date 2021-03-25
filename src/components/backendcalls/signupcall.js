@@ -1,12 +1,10 @@
 export const signupcall = (user) => {
-    console.log(user)
     return fetch('https://blog-website-sharad.herokuapp.com/signup', {
         method: 'POST',
         credentials: 'include',
         body: user.formData,
     })
         .then((res) => {
-            console.log(res.headers)
             return res.json()
         })
         .catch((err) => {
@@ -23,7 +21,6 @@ export const LogoutCall = () => {
             if (typeof window !== 'undefined') {
                 localStorage.removeItem('jwt')
             }
-            console.log(res)
             window.location.reload()
         })
         .catch((err) => {

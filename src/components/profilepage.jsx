@@ -92,7 +92,6 @@ const ProfilePage = () => {
                 return res.json()
             })
             .then((data) => {
-                console.log(data)
                 setProfile(data)
             })
             .catch((err) => {
@@ -116,7 +115,6 @@ const ProfilePage = () => {
         updateProfile(profilepic.formData)
             .then(() => {
                 console.log('profile updayed')
-                window.location.reload()
             })
             .catch((err) => {
                 console.log(err)
@@ -165,7 +163,7 @@ const ProfilePage = () => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     }
-    console.log(profile)
+
     return (
         <Grid container>
             <Header />

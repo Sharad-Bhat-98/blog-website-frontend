@@ -11,7 +11,6 @@ const SnackBarComponent = (props) => {
     })
     const [open, setOpen] = useState({ opensnack })
     const [erropen, setErrOpen] = useState({ erroropensnack })
-    console.log(open)
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {

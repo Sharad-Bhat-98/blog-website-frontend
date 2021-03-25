@@ -38,7 +38,6 @@ const Homepage = () => {
             })
             .then((data) => {
                 setData(data.blogs)
-                console.log(data)
             })
             .catch((err) => {
                 console.log(err)
@@ -50,7 +49,6 @@ const Homepage = () => {
     }
 
     useEffect(() => {
-        console.log('woarking')
         preload()
     }, [])
 
@@ -67,7 +65,7 @@ const Homepage = () => {
             >
                 <Grid item xs={12}>
                     <Typography variant="h3" style={{ textAlign: 'center' }}>
-                        Welcome Degerates!!!
+                        Welcome !!!
                     </Typography>
                     <Typography variant="h6" style={{ textAlign: 'center' }}>
                         to my website

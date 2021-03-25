@@ -48,7 +48,6 @@ const UpdateBlog = ({ match }) => {
                 return res.json()
             })
             .then((data) => {
-                console.log(data)
                 setReditect(true)
             })
             .catch((err) => {
