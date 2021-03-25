@@ -116,6 +116,7 @@ const ProfilePage = () => {
         updateProfile(profilepic.formData)
             .then(() => {
                 console.log('profile updayed')
+                window.location.reload()
             })
             .catch((err) => {
                 console.log(err)
