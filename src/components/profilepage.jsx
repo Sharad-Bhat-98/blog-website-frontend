@@ -10,7 +10,7 @@ import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
-import { getProfile } from './backendcalls/profilecall'
+import { getProfile, updateProfile } from './backendcalls/profilecall'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import Card from '@material-ui/core/Card'
@@ -19,6 +19,8 @@ import Button from '@material-ui/core/Button'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import SnackBarComponent from './snackbar'
 import { Link } from 'react-router-dom'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import CancelIcon from '@material-ui/icons/Cancel'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -78,6 +80,11 @@ const ProfilePage = () => {
         user: { _id: '', email: '', password: '' },
         blog: [],
     })
+    const [profilepic, setProfilepic] = useState({
+        formData: '',
+        actionButtons: false,
+    })
+    console.log(profilepic)
 
     useEffect(() => {
         getProfile()
@@ -91,10 +98,45 @@ const ProfilePage = () => {
             .catch((err) => {
                 console.log(err)
             })
+        setProfilepic({ formData: new FormData() })
     }, [])
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
+    }
+    const handleimageupload = (e) => {
+        const img = e.target.files[0]
+        profilepic.formData.append('photo', img)
+        setProfilepic({ ...profilepic, actionButtons: true })
+    }
+    const removePic = () => {
+        setProfilepic({ ...profilepic, actionButtons: false })
+    }
+    const handleSubmitPic = () => {
+        updateProfile(profilepic.formData)
+            .then(() => {
+                console.log('profile updayed')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    const dispButtons = () => {
+        if (profilepic.actionButtons) {
+            return (
+                <div style={{ marginTop: '2%' }}>
+                    <CheckCircleIcon
+                        fontSize="large"
+                        onClick={handleSubmitPic}
+                    />
+                    &nbsp;
+                    <CancelIcon fontSize="large" onClick={removePic} />
+                </div>
+            )
+        } else {
+            return
+        }
     }
 
     const handleChangeIndex = (index) => {
@@ -139,6 +181,7 @@ const ProfilePage = () => {
                         multiple
                         type="file"
                         name="photo"
+                        onChange={handleimageupload}
                     />
                     <label htmlFor="contained-button-file">
                         <Button
@@ -152,6 +195,7 @@ const ProfilePage = () => {
                         </Button>
                     </label>
                 </div>
+                {dispButtons()}
             </Grid>
             <Grid item xs={8}>
                 <Paper className={classes.root}>
