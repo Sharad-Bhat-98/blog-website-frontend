@@ -78,9 +78,9 @@ const Homepage = () => {
                             <Grid
                                 item
                                 xs={12}
-                                sm={12}
-                                md={6}
-                                lg={4}
+                                sm={6}
+                                md={4}
+                                lg={3}
                                 xl={3}
                                 key={e._id}
                             >
