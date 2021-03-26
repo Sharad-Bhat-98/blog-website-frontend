@@ -192,51 +192,55 @@ const Header = (props) => {
                 </React.Fragment>
             )
         } else {
-            ;<React.Fragment>
-                <IconButton
-                    {...{
-                        edge: 'end',
-                        color: 'inherit',
-                        'aria-label': 'menu',
-                        'aria-haspopup': 'true',
-                        onClick: handleDrawerOpen,
-                    }}
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Drawer
-                    {...{
-                        anchor: 'top',
-                        open: drawerOpen,
-                        onClick: handleDrawerClose,
-                    }}
-                >
-                    <div>
-                        <ListItem button>
-                            <Link
-                                to="/login"
-                                style={{
-                                    textDecoration: 'none',
-                                    color: 'inherit',
-                                }}
-                            >
-                                <ListItemText primary={'LOGIN'} /> <Divider />
-                            </Link>
-                        </ListItem>
-                        <ListItem button>
-                            <Link
-                                to="/signup"
-                                style={{
-                                    textDecoration: 'none',
-                                    color: 'inherit',
-                                }}
-                            >
-                                <ListItemText primary={'SIGNUP'} /> <Divider />
-                            </Link>
-                        </ListItem>
-                    </div>
-                </Drawer>
-            </React.Fragment>
+            return (
+                <React.Fragment>
+                    <IconButton
+                        {...{
+                            edge: 'end',
+                            color: 'inherit',
+                            'aria-label': 'menu',
+                            'aria-haspopup': 'true',
+                            onClick: handleDrawerOpen,
+                        }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Drawer
+                        {...{
+                            anchor: 'top',
+                            open: drawerOpen,
+                            onClick: handleDrawerClose,
+                        }}
+                    >
+                        <div>
+                            <ListItem button>
+                                <Link
+                                    to="/login"
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    <ListItemText primary={'LOGIN'} />{' '}
+                                    <Divider />
+                                </Link>
+                            </ListItem>
+                            <ListItem button>
+                                <Link
+                                    to="/signup"
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    <ListItemText primary={'SIGNUP'} />{' '}
+                                    <Divider />
+                                </Link>
+                            </ListItem>
+                        </div>
+                    </Drawer>
+                </React.Fragment>
+            )
         }
     }
 
