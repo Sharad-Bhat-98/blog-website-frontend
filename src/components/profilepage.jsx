@@ -222,7 +222,15 @@ const ProfilePage = () => {
                         <Grid container spacing={3}>
                             {profile.blog.map((e) => {
                                 return (
-                                    <Grid item xs={4} key={e._id}>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        sm={12}
+                                        md={6}
+                                        lg={4}
+                                        xl={4}
+                                        key={e._id}
+                                    >
                                         <Card className={classes.root}>
                                             <Link
                                                 to={`/blog/${e._id}`}
