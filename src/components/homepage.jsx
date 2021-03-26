@@ -75,7 +75,15 @@ const Homepage = () => {
                 {data[0] ? (
                     data.map((e) => {
                         return (
-                            <Grid item xs={3} key={e._id}>
+                            <Grid
+                                item
+                                xs={12}
+                                sm={12}
+                                md={6}
+                                lg={4}
+                                xl={3}
+                                key={e._id}
+                            >
                                 <Card className={classes.root}>
                                     <Link
                                         to={`/blog/${e._id}`}
