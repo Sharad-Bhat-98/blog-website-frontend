@@ -147,7 +147,7 @@ const ProfilePage = () => {
         widht: '100%',
         borderRight: '0.5px solid grey',
         height: `${high}px`,
-        marginTop: '4%',
+        marginTop: '7%',
         textAlign: 'center',
     }
     const style1 = {
@@ -167,7 +167,7 @@ const ProfilePage = () => {
     return (
         <Grid container>
             <Header />
-            <Grid item xs={4} sm={4} md={4} lg={4} xl={4} style={style}>
+            <Grid item xs={6} sm={6} md={4} lg={4} xl={4} style={style}>
                 <SnackBarComponent opensnack={true} erroropensnack={true} />
                 <div style={style1}></div>
                 <br></br>

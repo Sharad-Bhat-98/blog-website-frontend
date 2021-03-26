@@ -84,7 +84,7 @@ const BlogDetail = () => {
             <Grid item xs={12}>
                 <Header />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={12} md={6}>
                 <img
                     src={`https://blog-website-sharad.herokuapp.com/blogimg/${id.id}`}
                     height="70%"
@@ -96,7 +96,7 @@ const BlogDetail = () => {
                     }}
                 />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={11} sm={11} md={5}>
                 <Typography variant="h6" style={{ textAlign: 'justify' }}>
                     {blogdetails.blogdata}
                 </Typography>

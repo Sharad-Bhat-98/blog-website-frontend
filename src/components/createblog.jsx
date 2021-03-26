@@ -104,7 +104,7 @@ const CreateBlog = () => {
                     error={Error.blogtitle ? true : false}
                     helperText={Error.blogtitle}
                     style={{
-                        width: '70%',
+                        width: '80%',
                         marginBottom: '5%',
                         marginTop: '3%',
                     }}
@@ -116,7 +116,7 @@ const CreateBlog = () => {
                     label="create a post"
                     rows={7}
                     variant="outlined"
-                    style={{ width: '70%', marginBottom: '2%' }}
+                    style={{ width: '80%', marginBottom: '2%' }}
                     error={Error.blogdata ? true : false}
                     helperText={Error.blogdata}
                     onChange={handlechange}
