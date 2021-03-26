@@ -138,8 +138,61 @@ const Header = (props) => {
             setView({ ...view, drawerOpen: false })
         }
 
-        return (
-            <React.Fragment>
+        if (isAuthenticated()) {
+            return (
+                <React.Fragment>
+                    <IconButton
+                        {...{
+                            edge: 'end',
+                            color: 'inherit',
+                            'aria-label': 'menu',
+                            'aria-haspopup': 'true',
+                            onClick: handleDrawerOpen,
+                        }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Drawer
+                        {...{
+                            anchor: 'top',
+                            open: drawerOpen,
+                            onClick: handleDrawerClose,
+                        }}
+                    >
+                        <div>
+                            <ListItem button>
+                                <Link
+                                    to="/profile"
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    <ListItemText primary={'YOUR PROFILE'} />{' '}
+                                    <Divider />
+                                </Link>
+                            </ListItem>
+                            <ListItem button>
+                                <Link
+                                    to="/createblog"
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    <ListItemText primary={'ADD A NEW BLOG'} />{' '}
+                                    <Divider />
+                                </Link>
+                            </ListItem>
+                            <ListItem button onClick={LogoutCall}>
+                                <ListItemText primary={'LOGOUT'} />
+                            </ListItem>
+                        </div>
+                    </Drawer>
+                </React.Fragment>
+            )
+        } else {
+            ;<React.Fragment>
                 <IconButton
                     {...{
                         edge: 'end',
@@ -161,35 +214,30 @@ const Header = (props) => {
                     <div>
                         <ListItem button>
                             <Link
-                                to="/profile"
+                                to="/login"
                                 style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
                                 }}
                             >
-                                <ListItemText primary={'YOUR PROFILE'} />{' '}
-                                <Divider />
+                                <ListItemText primary={'LOGIN'} /> <Divider />
                             </Link>
                         </ListItem>
                         <ListItem button>
                             <Link
-                                to="/createblog"
+                                to="/signup"
                                 style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
                                 }}
                             >
-                                <ListItemText primary={'ADD A NEW BLOG'} />{' '}
-                                <Divider />
+                                <ListItemText primary={'SIGNUP'} /> <Divider />
                             </Link>
-                        </ListItem>
-                        <ListItem button onClick={LogoutCall}>
-                            <ListItemText primary={'LOGOUT'} />
                         </ListItem>
                     </div>
                 </Drawer>
             </React.Fragment>
-        )
+        }
     }
 
     return (
