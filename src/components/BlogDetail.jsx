@@ -80,7 +80,7 @@ const BlogDetail = () => {
     }
 
     return (
-        <Grid container>
+        <Grid container spacing={1}>
             <Grid item xs={12}>
                 <Header />
             </Grid>
@@ -96,7 +96,7 @@ const BlogDetail = () => {
                     }}
                 />
             </Grid>
-            <Grid item xs={11} sm={11} md={5}>
+            <Grid item xs={12} sm={12} md={5}>
                 <Typography variant="h6" style={{ textAlign: 'justify' }}>
                     {blogdetails.blogdata}
                 </Typography>

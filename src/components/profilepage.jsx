@@ -196,7 +196,7 @@ const ProfilePage = () => {
                 </div>
                 {dispButtons()}
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={6} sm={6} md={8} lg={8} xl={8}>
                 <Paper className={classes.root}>
                     <Tabs
                         value={value}
