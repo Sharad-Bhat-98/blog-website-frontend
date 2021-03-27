@@ -67,6 +67,7 @@ const ProfilePage = () => {
         actionButtons: false,
     })
     const [Redirectprofile, setRedirectprofile] = useState(false)
+    const [Alert, setAlert] = useState(false)
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
@@ -150,6 +151,7 @@ const ProfilePage = () => {
                 console.log(err)
             })
         setProfilepic({ formData: new FormData() })
+        setAlert(false)
     }, [])
 
     const handleChange = (event, newValue) => {
@@ -165,15 +167,14 @@ const ProfilePage = () => {
     }
     const handleSubmitPic = () => {
         updateProfile(profilepic.formData)
-            .then(() => {
-                setRedirectprofile(true)
+            .then((data) => {
+                if (data.errors) {
+                    setAlert(true)
+                } else {
+                    setRedirectprofile(true)
+                }
             })
             .catch((err) => {
-                ;<SnackBarComponent
-                    erroropensnack={true}
-                    alerttype={'error'}
-                    alertMessage={'profile not updated'}
-                />
                 console.log(err)
             })
     }
@@ -181,6 +182,20 @@ const ProfilePage = () => {
     const RedirectHome = () => {
         if (Redirectprofile) {
             return <Redirect to="/" />
+        } else {
+            return null
+        }
+    }
+
+    const alertMessage = () => {
+        if (Alert) {
+            return (
+                <SnackBarComponent
+                    erroropensnack={true}
+                    alerttype={'error'}
+                    alertMessage={'profile not updated'}
+                />
+            )
         } else {
             return null
         }
@@ -219,7 +234,6 @@ const ProfilePage = () => {
                 xl={4}
                 className={classes.style}
             >
-                <SnackBarComponent opensnack={true} erroropensnack={true} />
                 <div className={classes.style1}></div>
                 <br></br>
 
@@ -322,6 +336,7 @@ const ProfilePage = () => {
                 </SwipeableViews>
             </Grid>
             {RedirectHome()}
+            {alertMessage()}
         </Grid>
     )
 }
