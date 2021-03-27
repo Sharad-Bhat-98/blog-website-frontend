@@ -4,10 +4,10 @@ import Snackbar from '@material-ui/core/Snackbar'
 import { useState } from 'react'
 
 const SnackBarComponent = (props) => {
-    const { opensnack, erroropensnack, alerttype } = props
+    const { opensnack, erroropensnack, alerttype, alertMessage } = props
     const [alerterror, setAlertError] = useState({
         type: alerttype,
-        message: 'uhu',
+        message: alertMessage,
     })
     const [open, setOpen] = useState({ opensnack })
     const [erropen, setErrOpen] = useState({ erroropensnack })

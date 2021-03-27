@@ -18,7 +18,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import SnackBarComponent from './snackbar'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import CancelIcon from '@material-ui/icons/Cancel'
 
@@ -55,25 +55,7 @@ function a11yProps(index) {
     }
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        marginTop: '7%',
-        backgroundColor: theme.palette.background.paper,
-        width: '100%',
-    },
-    root1: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-    input: {
-        display: 'none',
-    },
-}))
-
 const ProfilePage = () => {
-    const classes = useStyles()
     const theme = useTheme()
     const [value, setValue] = React.useState(0)
     const [profile, setProfile] = useState({
@@ -84,7 +66,77 @@ const ProfilePage = () => {
         formData: '',
         actionButtons: false,
     })
-    console.log(profilepic)
+    const [Redirectprofile, setRedirectprofile] = useState(false)
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            flexGrow: 1,
+            marginTop: '7%',
+            backgroundColor: theme.palette.background.paper,
+            width: '100%',
+        },
+        root1: {
+            '& > *': {
+                margin: theme.spacing(1),
+            },
+        },
+        input: {
+            display: 'none',
+        },
+        style: {
+            [theme.breakpoints.down('sm')]: {
+                width: '100%',
+                height: '300px',
+            },
+            [theme.breakpoints.up('sm')]: {
+                widht: '100%',
+                borderRight: '0.5px solid grey',
+                height: `${window.screen.height}px`,
+                textAlign: 'center',
+            },
+        },
+        style1: {
+            [theme.breakpoints.down('sm')]: {
+                width: '40%',
+                height: '60%',
+                border: '1px solid black',
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: '15%',
+                borderRadius: '50%',
+                backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/profile/img/${profile.user._id})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+            },
+            [theme.breakpoints.up('sm')]: {
+                width: '80%',
+                height: '35%',
+                border: '1px solid black',
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: '25%',
+                borderRadius: '50%',
+                backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/profile/img/${profile.user._id})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+            },
+            [theme.breakpoints.up('lg')]: {
+                width: '70%',
+                height: '40%',
+                border: '1px solid black',
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: '25%',
+                borderRadius: '50%',
+                backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/profile/img/${profile.user._id})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+            },
+        },
+    }))
+    const classes = useStyles()
 
     useEffect(() => {
         getProfile()
@@ -114,11 +166,24 @@ const ProfilePage = () => {
     const handleSubmitPic = () => {
         updateProfile(profilepic.formData)
             .then(() => {
-                console.log('profile updayed')
+                setRedirectprofile(true)
             })
             .catch((err) => {
+                ;<SnackBarComponent
+                    erroropensnack={true}
+                    alerttype={'error'}
+                    alertMessage={'profile not updated'}
+                />
                 console.log(err)
             })
+    }
+
+    const RedirectHome = () => {
+        if (Redirectprofile) {
+            return <Redirect to="/" />
+        } else {
+            return null
+        }
     }
 
     const dispButtons = () => {
@@ -142,37 +207,23 @@ const ProfilePage = () => {
         setValue(index)
     }
 
-    const high = window.screen.height
-    const style = {
-        widht: '100%',
-        borderRight: '0.5px solid grey',
-        height: `${high}px`,
-        marginTop: '7%',
-        textAlign: 'center',
-    }
-    const style1 = {
-        width: '40%',
-        height: '20%',
-        border: '1px solid black',
-        display: 'block',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: '10%',
-        borderRadius: '50%',
-        backgroundImage: ` url(https://blog-website-sharad.herokuapp.com/profile/img/${profile.user._id})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    }
-
     return (
         <Grid container>
             <Header />
-            <Grid item xs={6} sm={6} md={4} lg={4} xl={4} style={style}>
+            <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={4}
+                xl={4}
+                className={classes.style}
+            >
                 <SnackBarComponent opensnack={true} erroropensnack={true} />
-                <div style={style1}></div>
+                <div className={classes.style1}></div>
                 <br></br>
 
-                <div className={classes.root1}>
+                <div className={classes.root1} style={{ textAlign: 'center' }}>
                     <input
                         accept="image/*"
                         className={classes.input}
@@ -196,7 +247,7 @@ const ProfilePage = () => {
                 </div>
                 {dispButtons()}
             </Grid>
-            <Grid item xs={6} sm={6} md={8} lg={8} xl={8}>
+            <Grid item xs={12} sm={6} md={8} lg={8} xl={8}>
                 <Paper className={classes.root}>
                     <Tabs
                         value={value}
@@ -270,6 +321,7 @@ const ProfilePage = () => {
                     </TabPanel>
                 </SwipeableViews>
             </Grid>
+            {RedirectHome()}
         </Grid>
     )
 }
