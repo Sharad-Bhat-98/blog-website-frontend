@@ -12,10 +12,10 @@ export const getProfile = async () => {
     return res
 }
 
-export const updateProfile = (image) => {
+export const updateProfile = async (image) => {
     const data = JSON.parse(localStorage.getItem('jwt'))
 
-    return fetch(
+    const res = fetch(
         `https://blog-website-sharad.herokuapp.com/profile/img/${data.user}`,
         {
             method: 'PATCH',
@@ -23,10 +23,6 @@ export const updateProfile = (image) => {
             body: image,
         }
     )
-        .then((res) => {
-            return res.json()
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+
+    return await res.json()
 }

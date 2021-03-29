@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import SnackBarComponent from './snackbar'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +31,7 @@ const CreateBlog = () => {
         blogtitle: '',
         photo: '',
     })
+    const [Alert, setAlert] = useState({ type: false, message: '' })
 
     const [redirect, setReditect] = useState(false)
 
@@ -70,14 +72,16 @@ const CreateBlog = () => {
 
     const submit = () => {
         postBlog(data)
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
+            .then(() => {
                 setReditect(true)
             })
             .catch((err) => {
                 console.log(err)
+                setAlert({
+                    ...Alert,
+                    type: true,
+                    message: 'BLOG NOT CREATED',
+                })
             })
     }
 
@@ -86,6 +90,24 @@ const CreateBlog = () => {
             return <Redirect to="/" />
         } else {
             return
+        }
+    }
+    const handleState = () => {
+        setAlert({ ...Alert, type: false, message: '' })
+    }
+
+    const alertMessage = () => {
+        if (Alert.type) {
+            return (
+                <SnackBarComponent
+                    erroropensnack={true}
+                    alerttype={'error'}
+                    alertMessage={Alert.message}
+                    handleState={handleState}
+                />
+            )
+        } else {
+            return null
         }
     }
 
@@ -157,6 +179,7 @@ const CreateBlog = () => {
                 </Button>
             </div>
             {redirectPage()}
+            {alertMessage()}
         </React.Fragment>
     )
 }

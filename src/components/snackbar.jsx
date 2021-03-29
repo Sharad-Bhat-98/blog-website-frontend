@@ -5,7 +5,13 @@ import { useState } from 'react'
 
 const SnackBarComponent = (props) => {
     console.log('working snack abr')
-    const { opensnack, erroropensnack, alerttype, alertMessage } = props
+    const {
+        opensnack,
+        erroropensnack,
+        alerttype,
+        alertMessage,
+        handleState,
+    } = props
     const [alerterror, setAlertError] = useState({
         type: alerttype,
         message: alertMessage,
@@ -20,6 +26,7 @@ const SnackBarComponent = (props) => {
         setOpen({ ...open, opensnack: false })
         setErrOpen({ ...erropen, erroropensnack: false })
         setAlertError({ ...alerterror, type: '', message: '' })
+        handleState()
     }
 
     const displayalert = () => {

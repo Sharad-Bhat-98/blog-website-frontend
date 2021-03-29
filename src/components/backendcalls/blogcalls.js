@@ -30,7 +30,7 @@ export const postBlog = async (data) => {
         }
     )
 
-    return res
+    return await res.json()
 }
 
 export const deleteBlog = async (id) => {

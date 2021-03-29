@@ -67,7 +67,7 @@ const ProfilePage = () => {
         actionButtons: false,
     })
     const [Redirectprofile, setRedirectprofile] = useState(false)
-    const [Alert, setAlert] = useState(false)
+    const [Alert, setAlert] = useState({ type: false, message: '' })
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
@@ -151,7 +151,7 @@ const ProfilePage = () => {
                 console.log(err)
             })
         setProfilepic({ formData: new FormData() })
-        setAlert(false)
+        setAlert({ ...Alert, type: false, message: '' })
     }, [])
 
     const handleChange = (event, newValue) => {
@@ -159,6 +159,14 @@ const ProfilePage = () => {
     }
     const handleimageupload = (e) => {
         const img = e.target.files[0]
+        if (img.size > 1000000) {
+            setAlert({
+                ...Alert,
+                type: true,
+                message: 'image should be less than 1MB',
+            })
+            return
+        }
         profilepic.formData.append('photo', img)
         setProfilepic({ ...profilepic, actionButtons: true })
     }
@@ -167,15 +175,16 @@ const ProfilePage = () => {
     }
     const handleSubmitPic = () => {
         updateProfile(profilepic.formData)
-            .then((data) => {
-                if (data.errors) {
-                    setAlert(true)
-                } else {
-                    setRedirectprofile(true)
-                }
+            .then(() => {
+                setRedirectprofile(true)
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err, 'here!!!')
+                setAlert({
+                    ...Alert,
+                    type: true,
+                    message: 'Profile not updated',
+                })
             })
     }
 
@@ -186,14 +195,18 @@ const ProfilePage = () => {
             return null
         }
     }
+    const handleState = () => {
+        setAlert({ ...Alert, type: false, message: '' })
+    }
 
     const alertMessage = () => {
-        if (Alert) {
+        if (Alert.type) {
             return (
                 <SnackBarComponent
                     erroropensnack={true}
                     alerttype={'error'}
-                    alertMessage={'profile not updated'}
+                    alertMessage={Alert.message}
+                    handleState={handleState}
                 />
             )
         } else {
