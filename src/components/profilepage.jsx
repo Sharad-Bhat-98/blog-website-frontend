@@ -70,10 +70,18 @@ const ProfilePage = () => {
     const [Alert, setAlert] = useState({ type: false, message: '' })
     const useStyles = makeStyles((theme) => ({
         root: {
-            flexGrow: 1,
-            marginTop: '7%',
-            backgroundColor: theme.palette.background.paper,
-            width: '100%',
+            [theme.breakpoints.down('sm')]: {
+                flexGrow: 1,
+                marginTop: '13%',
+                backgroundColor: theme.palette.background.paper,
+                width: '100%',
+            },
+            [theme.breakpoints.up('sm')]: {
+                flexGrow: 1,
+                marginTop: '7%',
+                backgroundColor: theme.palette.background.paper,
+                width: '100%',
+            },
         },
         root1: {
             '& > *': {
@@ -217,7 +225,7 @@ const ProfilePage = () => {
     const dispButtons = () => {
         if (profilepic.actionButtons) {
             return (
-                <div style={{ marginTop: '2%' }}>
+                <div style={{ marginTop: '2%', textAlign: 'center' }}>
                     <CheckCircleIcon
                         fontSize="large"
                         onClick={handleSubmitPic}
