@@ -226,12 +226,31 @@ const ProfilePage = () => {
         if (profilepic.actionButtons) {
             return (
                 <div style={{ marginTop: '2%', textAlign: 'center' }}>
-                    <CheckCircleIcon
-                        fontSize="large"
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        style={{
+                            textDecoration: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
                         onClick={handleSubmitPic}
-                    />
+                    >
+                        <CheckCircleIcon fontSize="large" />
+                    </Button>
                     &nbsp;
-                    <CancelIcon fontSize="large" onClick={removePic} />
+                    <Button
+                        size="small"
+                        variant="outlined"
+                        style={{
+                            textDecoration: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
+                        onClick={removePic}
+                    >
+                        <CancelIcon fontSize="large" />
+                    </Button>
                 </div>
             )
         } else {
