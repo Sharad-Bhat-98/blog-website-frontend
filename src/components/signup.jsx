@@ -4,11 +4,11 @@ import Header from './header'
 import Joi from 'joi-browser'
 import { useState, useEffect } from 'react'
 import { signupcall } from './backendcalls/signupcall'
-import Alert from '@material-ui/lab/Alert'
 import Snackbar from '@material-ui/core/Snackbar'
 import { Redirect } from 'react-router-dom'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import { makeStyles } from '@material-ui/core/styles'
+import SnackBarComponent from './snackbar'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,6 +48,7 @@ const SignUp = () => {
     const [erropen, setErrOpen] = useState(true)
     const [redirect, setRedirect] = useState(false)
     const [redirectvalue, setRedirectValue] = useState({ value: null })
+    const [Alert, setAlert] = useState({ type: false, message: '' })
 
     useEffect(() => {
         setData({ ...data, formData: new FormData() })
@@ -114,6 +115,14 @@ const SignUp = () => {
 
     const handleimageupload = (e) => {
         const img = e.target.files[0]
+        if (img.size > 1000000) {
+            setAlert({
+                ...Alert,
+                type: true,
+                message: 'image should be less than 1MB',
+            })
+            return
+        }
 
         data.formData.set(e.target.name, img)
         setData({ ...data, photo: img })
@@ -162,6 +171,25 @@ const SignUp = () => {
                     </Alert>
                 </Snackbar>
             )
+        }
+    }
+
+    const handleState = () => {
+        setAlert({ ...Alert, type: false, message: '' })
+    }
+
+    const alertMessage = () => {
+        if (Alert.type) {
+            return (
+                <SnackBarComponent
+                    erroropensnack={true}
+                    alerttype={'error'}
+                    alertMessage={Alert.message}
+                    handleState={handleState}
+                />
+            )
+        } else {
+            return null
         }
     }
     return (
@@ -237,6 +265,7 @@ const SignUp = () => {
                 </Button>
                 {redirectvalue.value}
             </div>
+            {alertMessage()}
         </div>
     )
 }

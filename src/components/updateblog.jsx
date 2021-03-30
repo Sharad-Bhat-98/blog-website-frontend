@@ -21,6 +21,7 @@ const UpdateBlog = ({ match }) => {
     const schema = {
         blogdata: Joi.string().required().min(5),
     }
+    const [Alert, setAlert] = useState({ type: false, message: '' })
 
     const handlechange = (e) => {
         setData({
@@ -51,8 +52,27 @@ const UpdateBlog = ({ match }) => {
                 setReditect(true)
             })
             .catch((err) => {
+                setAlert({ ...Alert, type: true, message: 'blog not updated' })
                 console.log(err)
             })
+    }
+    const handleState = () => {
+        setAlert({ ...Alert, type: false, message: '' })
+    }
+
+    const alertMessage = () => {
+        if (Alert.type) {
+            return (
+                <SnackBarComponent
+                    erroropensnack={true}
+                    alerttype={'error'}
+                    alertMessage={Alert.message}
+                    handleState={handleState}
+                />
+            )
+        } else {
+            return null
+        }
     }
 
     const redirectPage = () => {
@@ -91,6 +111,7 @@ const UpdateBlog = ({ match }) => {
                 </Button>
             </div>
             {redirectPage()}
+            {alertMessage()}
         </React.Fragment>
     )
 }

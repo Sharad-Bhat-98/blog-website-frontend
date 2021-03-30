@@ -32,7 +32,6 @@ const CreateBlog = () => {
         photo: '',
     })
     const [Alert, setAlert] = useState({ type: false, message: '' })
-
     const [redirect, setReditect] = useState(false)
 
     const schema = {
@@ -54,6 +53,14 @@ const CreateBlog = () => {
 
     const handleimageupload = (e) => {
         const img = e.target.files[0]
+        if (img.size > 1000000) {
+            setAlert({
+                ...Alert,
+                type: true,
+                message: 'image should be less than 1MB',
+            })
+            return
+        }
         data.formData.append(e.target.name, img)
         setData({ ...data, photo: img })
         setError({ ...Error, photo: null })
