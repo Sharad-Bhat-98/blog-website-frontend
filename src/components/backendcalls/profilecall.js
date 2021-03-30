@@ -15,7 +15,7 @@ export const getProfile = async () => {
 export const updateProfile = async (image) => {
     const data = JSON.parse(localStorage.getItem('jwt'))
 
-    const res = fetch(
+    const res = await fetch(
         `https://blog-website-sharad.herokuapp.com/profile/img/${data.user}`,
         {
             method: 'PATCH',
