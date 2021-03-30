@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import Joi from 'joi-browser'
 import { updateBlog } from './backendcalls/blogcalls'
 import { Redirect } from 'react-router-dom'
+import SnackBarComponent from './snackbar'
 
 const UpdateBlog = ({ match }) => {
     const [data, setData] = useState({
