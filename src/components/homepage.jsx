@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import Grid from '@material-ui/core/Grid'
+import backgroundimg from '../images/coverimg.jpg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -64,11 +65,11 @@ const Homepage = () => {
                 alignItems="baseline"
             >
                 <Grid item xs={12}>
-                    <Typography variant="h3" style={{ textAlign: 'center' }}>
-                        Welcome !!!
+                    <Typography variant="h4" component="h1" align="center">
+                        <b>Welcome To My BLOG Website</b>
                     </Typography>
-                    <Typography variant="h6" style={{ textAlign: 'center' }}>
-                        to my website
+                    <Typography align="center" variant="subtitle1">
+                        Explore collection of blogs
                     </Typography>
                 </Grid>
 

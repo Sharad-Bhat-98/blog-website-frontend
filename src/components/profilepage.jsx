@@ -166,6 +166,7 @@ const ProfilePage = () => {
         setValue(newValue)
     }
     const handleimageupload = (e) => {
+        console.log('image working')
         const img = e.target.files[0]
         if (img.size > 1000000) {
             setAlert({
@@ -179,7 +180,11 @@ const ProfilePage = () => {
         setProfilepic({ ...profilepic, actionButtons: true })
     }
     const removePic = () => {
-        setProfilepic({ ...profilepic, actionButtons: false })
+        setProfilepic({
+            ...profilepic,
+            formData: new FormData(),
+            actionButtons: false,
+        })
     }
     const handleSubmitPic = () => {
         updateProfile(profilepic.formData)

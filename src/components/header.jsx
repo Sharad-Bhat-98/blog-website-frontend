@@ -245,7 +245,7 @@ const Header = (props) => {
     }
 
     return (
-        <div style={{ paddingBottom: '85px' }}>
+        <div style={{ paddingBottom: '100px' }}>
             <AppBar>
                 <Toolbar>
                     {' '}
