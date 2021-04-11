@@ -73,64 +73,63 @@ const Homepage = () => {
                         Explore collection of blogs
                     </Typography>
                 </Grid>
-                <Container maxWidth="xs">
-                    {data[0] ? (
-                        data.map((e) => {
-                            return (
-                                <Grid
-                                    item
-                                    xs={12}
-                                    sm={6}
-                                    md={4}
-                                    lg={3}
-                                    xl={3}
-                                    key={e._id}
-                                >
-                                    <Card className={classes.root}>
-                                        <Link
-                                            to={`/blog/${e._id}`}
-                                            style={{
-                                                textDecoration: 'none',
-                                                color: 'inherit',
-                                            }}
-                                        >
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    className={classes.media}
-                                                    alt="Contemplative Reptile"
-                                                    image={`https://blog-website-sharad.herokuapp.com/blogimg/${e._id}`}
-                                                    title={e.blogtitle}
-                                                />
-                                                <CardContent>
-                                                    <Typography
-                                                        gutterBottom
-                                                        variant="h5"
-                                                        component="h2"
-                                                    >
-                                                        {e.blogtitle}
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="body2"
-                                                        color="textSecondary"
-                                                        component="p"
-                                                        noWrap="true"
-                                                        gutterBottom
-                                                    >
-                                                        {e.blogdata}
-                                                    </Typography>
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Link>
-                                    </Card>
-                                </Grid>
-                            )
-                        })
-                    ) : (
-                        <Typography variant="h5" style={{ marginTop: '10%' }}>
-                            Loading.....
-                        </Typography>
-                    )}
-                </Container>
+
+                {data[0] ? (
+                    data.map((e) => {
+                        return (
+                            <Grid
+                                item
+                                xs={12}
+                                sm={6}
+                                md={4}
+                                lg={3}
+                                xl={3}
+                                key={e._id}
+                            >
+                                <Card className={classes.root}>
+                                    <Link
+                                        to={`/blog/${e._id}`}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'inherit',
+                                        }}
+                                    >
+                                        <CardActionArea>
+                                            <CardMedia
+                                                className={classes.media}
+                                                alt="Contemplative Reptile"
+                                                image={`https://blog-website-sharad.herokuapp.com/blogimg/${e._id}`}
+                                                title={e.blogtitle}
+                                            />
+                                            <CardContent>
+                                                <Typography
+                                                    gutterBottom
+                                                    variant="h5"
+                                                    component="h2"
+                                                >
+                                                    {e.blogtitle}
+                                                </Typography>
+                                                <Typography
+                                                    variant="body2"
+                                                    color="textSecondary"
+                                                    component="p"
+                                                    noWrap="true"
+                                                    gutterBottom
+                                                >
+                                                    {e.blogdata}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Link>
+                                </Card>
+                            </Grid>
+                        )
+                    })
+                ) : (
+                    <Typography variant="h5" style={{ marginTop: '10%' }}>
+                        Loading.....
+                    </Typography>
+                )}
             </Grid>
         </React.Fragment>
     )
