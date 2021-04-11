@@ -73,11 +73,10 @@ const Homepage = () => {
                         Explore collection of blogs
                     </Typography>
                 </Grid>
-
-                {data[0] ? (
-                    data.map((e) => {
-                        return (
-                            <Container maxWidth="xs">
+                <Container maxWidth="xs">
+                    {data[0] ? (
+                        data.map((e) => {
+                            return (
                                 <Grid
                                     item
                                     xs={12}
@@ -124,14 +123,14 @@ const Homepage = () => {
                                         </Link>
                                     </Card>
                                 </Grid>
-                            </Container>
-                        )
-                    })
-                ) : (
-                    <Typography variant="h5" style={{ marginTop: '10%' }}>
-                        Loading.....
-                    </Typography>
-                )}
+                            )
+                        })
+                    ) : (
+                        <Typography variant="h5" style={{ marginTop: '10%' }}>
+                            Loading.....
+                        </Typography>
+                    )}
+                </Container>
             </Grid>
         </React.Fragment>
     )
