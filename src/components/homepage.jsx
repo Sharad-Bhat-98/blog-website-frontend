@@ -27,6 +27,45 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 250,
     },
+
+    innerdiv: {
+        position: 'absolute',
+        [theme.breakpoints.up('xs')]: {
+            top: '35%',
+        },
+        [theme.breakpoints.up('sm')]: {
+            top: '35%',
+            left: '20%',
+        },
+        [theme.breakpoints.up('md')]: {
+            top: '35%',
+            left: '28%',
+        },
+        [theme.breakpoints.up('lg')]: {
+            top: '35%',
+            left: '35%',
+        },
+    },
+    imgheight: {
+        backgroundImage: `url(${backgroundimg})`,
+        backgroundRepeat: 'no-repeat',
+        height: '600px',
+        border: '1px solid black',
+        backgroundSize: 'cover',
+        marginTop: '-12%',
+        [theme.breakpoints.up('xs')]: {
+            height: '400px',
+        },
+        [theme.breakpoints.up('sm')]: {
+            height: '500px',
+        },
+        [theme.breakpoints.up('md')]: {
+            height: '550px',
+        },
+        [theme.breakpoints.up('lg')]: {
+            height: '600px',
+        },
+    },
 }))
 
 const Homepage = () => {
@@ -65,13 +104,24 @@ const Homepage = () => {
                 justify="space-evenly"
                 alignItems="baseline"
             >
-                <Grid item xs={12}>
-                    <Typography variant="h4" component="h1" align="center">
-                        <b>Welcome To My BLOG Website</b>
-                    </Typography>
-                    <Typography align="center" variant="subtitle1">
-                        Explore collection of blogs
-                    </Typography>
+                <Grid item xs={12} className={classes.imgheight}>
+                    <div className={classes.innerdiv}>
+                        <Typography
+                            variant="h4"
+                            component="h1"
+                            align="center"
+                            style={{ color: '#ffffff' }}
+                        >
+                            <b> Welcome To My BLOG Website</b>
+                        </Typography>
+                        <Typography
+                            align="center"
+                            variant="subtitle1"
+                            style={{ color: '#ffffff' }}
+                        >
+                            Explore collection of blogs
+                        </Typography>
+                    </div>
                 </Grid>
 
                 {data[0] ? (

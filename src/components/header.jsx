@@ -265,7 +265,7 @@ const Header = (props) => {
                             style={{ textDecoration: 'none', color: 'inherit' }}
                         >
                             {' '}
-                            News{' '}
+                            BLOG{' '}
                         </Link>{' '}
                     </Typography>
                     <ElevationScroll {...props}>
