@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
     innerdiv: {
         position: 'absolute',
         [theme.breakpoints.up('xs')]: {
-            top: '35%',
+            top: '25%',
         },
         [theme.breakpoints.up('sm')]: {
-            top: '35%',
+            top: '30%',
             left: '20%',
         },
         [theme.breakpoints.up('md')]: {
@@ -49,8 +49,6 @@ const useStyles = makeStyles((theme) => ({
     imgheight: {
         backgroundImage: `url(${backgroundimg})`,
         backgroundRepeat: 'no-repeat',
-        height: '600px',
-        border: '1px solid black',
         backgroundSize: 'cover',
         marginTop: '-12%',
         [theme.breakpoints.up('xs')]: {
@@ -135,6 +133,7 @@ const Homepage = () => {
                                 lg={3}
                                 xl={3}
                                 key={e._id}
+                                style={{ marginTop: '5%' }}
                             >
                                 <Card className={classes.root}>
                                     <Link
